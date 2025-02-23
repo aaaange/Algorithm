@@ -1,9 +1,9 @@
 `
 - 분류 : 구현, 문자열
 - 성능 요약
-    - 메모리 :  KB
-    - 시간 :  ms
-- 제출 일자 : 2025-02-24 08:56
+    - 메모리 : 9340 KB
+    - 시간 : 92 ms
+- 제출 일자 : 2025-02-24 08:58
 `
 
 const fs = require("fs"); 
@@ -11,12 +11,17 @@ const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
 // const input = fs.readFileSync("input.txt").toString().trim().split("\n");
 
 const N = parseInt(input[0])
+const count = {};  // 각 성의 첫 글자 빈도를 저장할 객체
 
-const member = []
-
-for (let i = 1; i < N + 1 ; i ++) {
-    // member.add(input[i]) // add는 배열(Array)의 메서드가 아닌 set의 메서드
-    member.push(input[i])
+for (let i = 1; i <= N; i++) {
+    const firstLetter = input[i][0]; // 성의 첫 글자만 가져오기
+    count[firstLetter] = (count[firstLetter] || 0) + 1;
 }
 
-console.log(member)
+// 5명 이상인 첫 글자만 필터링 후 정렬
+const result = Object.keys(count)
+    .filter(letter => count[letter] >= 5)
+    .sort()
+    .join("");  // 문자열로 변환
+
+console.log(result.length > 0 ? result : "PREDAJA");
