@@ -1,3 +1,11 @@
+`
+- 분류 : 이분 탐색, 투 포인터
+- 성능 요약
+    - 메모리 : 26500 KB
+    - 시간 : 200 ms
+- 제출 일자 : 2025-02-24 17:28
+`
+
 const fs = require("fs");
 const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
 
@@ -11,15 +19,15 @@ let result = [];
 
 while (left < right) {
     let mix = arr[left] + arr[right]
-    if (abs(mix) < min_value ) {
-        min_value = abs(mix)
+    if (Math.abs(mix) < min_value ) {
+        min_value = Math.abs(mix)
         result = [arr[left], arr[right]]
     }
 
     if (mix > 0) {
-        right --
+        right--;
     } else {
-        left ++
+        left++;
     }
 }
 
