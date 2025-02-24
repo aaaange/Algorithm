@@ -1,23 +1,32 @@
+"""
+- 분류 : 이분 탐색, 투 포인터
+- 성능 요약
+    - 메모리 : 44748 KB
+    - 시간 : 116 ms
+- 제출 일자 : 2025-02-24 17:16
+"""
+
 N = int(input()) # 전체 용액의 수
 arr = list(map(int, input().split()))
 
+# 투 포인터 초기화
+left = 0
+right = N - 1
 min_value = float("inf")
-min_list = []
-current_value = 0
+result = []
 
-i = 0
-j = N-1
-while i <= (N//2+1) and j >= (N//2-1) and arr[i] != arr[j]:
-    current_value = arr[i] + arr[j]
-    if min_value > abs(current_value):
-        min_value = abs(current_value)
-        min_list = [arr[i], arr[j]]
+while left < right:
+    mix = arr[left] + arr[right]
+
+    # 현재 조합이 0에 더 가까우면 갱신
+    if abs(mix) < min_value:
+        min_value = abs(mix)
+        result = [arr[left], arr[right]]
+
+    if mix > 0:
+        right -= 1
     else:
-        break
-    if 0 < current_value:
-        j -= 1
-    elif 0 > current_value:
-        i += 1
+        left += 1
         
 
-print(min_list)
+print(result[0], result[1])
