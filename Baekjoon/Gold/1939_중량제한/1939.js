@@ -1,3 +1,11 @@
+`
+- 분류 : 자료구조, 그래프 이론, 그래프 탐색, 이분 탐색, 너비 우선 탐색, 최단 경로, 데이크스트라, 분리 집합
+- 성능 요약
+    - 메모리 : 59308 KB
+    - 시간 : 480 ms
+- 제출 일자 : 2025-05-30 17:19
+`
+
 const readline = require('readline');
 
 const rl = readline.createInterface({
